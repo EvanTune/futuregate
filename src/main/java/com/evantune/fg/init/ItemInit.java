@@ -9,44 +9,27 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.LazyValue;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = FutureGate.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-@ObjectHolder(FutureGate.MOD_ID)
 public class ItemInit {
 
-    public static final Item ruby = null;
+    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, FutureGate.MOD_ID);
 
-    public static final Item example_sword = null;
-    public static final Item example_pickaxe = null;
-    public static final Item example_shovel = null;
-    public static final Item example_axe = null;
-    public static final Item example_hoe = null;
+    public static final RegistryObject<Item> EXAMPLE_SWORD  = ITEMS.register("example_sword", () -> new SwordItem(ModItemTier.EXAMPLE, 7, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)));
+    public static final RegistryObject<Item> EXAMPLE_PICKAXE  = ITEMS.register("example_pickaxe", () -> new PickaxeItem(ModItemTier.EXAMPLE, 4, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)));
+    public static final RegistryObject<Item> EXAMPLE_RUBY = ITEMS.register("example_ruby", () -> new Item(new Item.Properties().group(FutureGate.FGItemGroup.instance).food(new Food.Builder().hunger(3).saturation(1.2f).effect(new EffectInstance(Effects.ABSORPTION, 6000, 5), 0.7f).build())));
 
-    public static final Item special_item = null;
-
-    public static final Item example_helmet = null;
-
-    @SubscribeEvent
-    public static void registerItems(final RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(new Item(new Item.Properties().group(FutureGate.FGItemGroup.instance).food(new Food.Builder().hunger(3).saturation(1.2f).effect(new EffectInstance(Effects.ABSORPTION, 6000, 5), 0.7f).build())).setRegistryName("ruby"));
-
-        // Tools
-        event.getRegistry().register(new SwordItem(ModItemTier.EXAMPLE, 7, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("example_sword"));
-        event.getRegistry().register(new PickaxeItem(ModItemTier.EXAMPLE, 4, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("example_pickaxe"));
-        event.getRegistry().register(new ShovelItem(ModItemTier.EXAMPLE, 2, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("example_shovel"));
-        event.getRegistry().register(new AxeItem(ModItemTier.EXAMPLE, 11, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("example_axe"));
-        event.getRegistry().register(new HoeItem(ModItemTier.EXAMPLE, 5.0f, new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("example_hoe"));
-
-        event.getRegistry().register(new SpecialItem(new Item.Properties().group(FutureGate.FGItemGroup.instance)).setRegistryName("special_item"));
-    }
+    public static final RegistryObject<Item> SPECIAL_ITEM = ITEMS.register("special_item", () -> new SpecialItem(new Item.Properties().group(FutureGate.FGItemGroup.instance)));
 
     public enum ModItemTier implements IItemTier {
         EXAMPLE(4, 1500, 15.0f, 7.0f, 250, () -> {
-            return Ingredient.fromItems(ItemInit.ruby);
+            return Ingredient.fromItems(ItemInit.EXAMPLE_RUBY.get());
         });
 
         private final int harvestLevel;
