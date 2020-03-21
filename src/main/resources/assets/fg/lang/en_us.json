@@ -1,0 +1,13 @@
+{
+  "item.fg.ruby": "Ruby",
+
+  "block.fg.example_block": "Example block",
+
+  "item.fg.example_sword": "Example sword",
+  "item.fg.example_pickaxe": "Example pickaxe",
+  "item.fg.example_shovel": "Example shovel",
+  "item.fg.example_axe": "Example axe",
+  "item.fg.example_hoe": "Example hoe",
+  "block.fg.special_block": "Special block"
+
+}

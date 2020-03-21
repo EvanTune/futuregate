@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values" : [
+    "fg:example_sword",
+    "fg:example_hoe",
+    "minecraft:apple"
+  ]
+}

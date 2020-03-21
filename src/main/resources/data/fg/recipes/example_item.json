@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredients": {
+    "item": "fg:special_block"
+  },
+  "result": "fg:special_item",
+  "experience": "5.0",
+  "cookingtime": 50
+}

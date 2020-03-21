@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "fg:block/example_block" }
+  }
+}

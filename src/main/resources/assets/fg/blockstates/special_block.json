@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fg:block/special_block"},
+    "facing=south": { "model": "fg:block/special_block", "y":  180},
+    "facing=west": { "model": "fg:block/special_block", "y":  270},
+    "facing=east": { "model": "fg:block/special_block", "y":  90}
+  }
+}
